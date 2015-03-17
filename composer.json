@@ -1,0 +1,20 @@
+{
+    "name": "swaaj/oauth2-storage-mongo",
+    "description": "",
+    "authors": [
+        {
+            "name": "Potsky",
+            "email": "potsky@me.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Swaaj\\Oauth2StorageMongo": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
