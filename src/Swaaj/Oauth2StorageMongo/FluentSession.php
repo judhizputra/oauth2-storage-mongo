@@ -51,17 +51,20 @@ class FluentSession extends FluentAdapter implements SessionInterface
                    ->where('id', $accessToken->getId())
                    ->pluck('session_id');
 
+        // var_dump($allowedSessionIds->{'$id'});
+
         $result = $this->getConnection()->table('oauth_sessions')
-                ->whereIn('id', $allowedSessionIds)
-                ->first();
+                ->find($allowedSessionIds->{'$id'});
+
+        // var_dump($result);
 
         if (is_null($result)) {
             return null;
         }
 
         return (new SessionEntity($this->getServer()))
-               ->setId($result['id'])
-               ->setOwner($result['owner_type'], $result['owner_id']);
+               ->setId($result['_id']->{'$id'})
+               ->setOwner($result['owner_type'], $result['owner_id']->{'$id'});
     }
 
     /**

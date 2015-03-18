@@ -24,9 +24,14 @@ class FluentAccessToken extends FluentAdapter implements AccessTokenInterface
       */
     public function get($token)
     {
+        // var_dump($token);
+
         $result = $this->getConnection()->table('oauth_access_tokens')
                 ->where('id', $token)
                 ->first();
+
+        // dd($result);
+
 
         if (is_null($result)) {
             return null;
